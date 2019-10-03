@@ -1,11 +1,21 @@
 <template lang="pug">
-  section.section
+  .container
     .columns.is-centered
       .column.is-fullwidth.is-8-desktop.has-text-centered
-        img(alt="MITS logo" src="../assets/logo.png")
+        img(
+          alt="Shorten your url",
+          src="../assets/undraw.png",
+          width="400px",
+          height="400px")
         h1.is-size-2-mobile.is-size-2-tablet.is-size-3-mobile 
-          | Create your short url below!
-        hr
+          span.has-text-primary.has-text-weight-bold (shrivl) 
+          | your long url below!
+        br
+        p.has-text-grey.has-text-left
+          | Shrivl is a URL shortening service made as a minor project by Atharva Sharma and Nishank Gupta of CSE 3rd year Batch A, MITS Gwalior. It utilises the Firebase Dynamic Links api to shrink long URLs to short URLs, you can find the complete project source code
+          a.has-text-primary.has-text-weight-bold(href="https://github.com/atharva3010/shrivl") 
+            | here.
+        br
         b-field
           b-input.is-large(
             v-model="longURL"
@@ -13,10 +23,14 @@
             placeholder="Enter Long URL here...",
             expanded,
             size="is-large")
-        button.button.is-primary.is-large(
+        button.button.is-primary.is-large.is-fullwidth(
           @click="shortURL()"
         )
-          | Generate Short URL!
+          span Generate short URL!
+          b-icon(
+            pack="fas",
+            icon="arrow-right",
+            size="is-small")
         
 </template>
 
@@ -30,7 +44,6 @@ export default {
       longURL: ""
     };
   },
-  mounted() {},
   methods: {
     shortURL() {
       return new Promise((resolve, reject) => {
@@ -49,9 +62,17 @@ export default {
           )
           .then(
             response => {
-              this.$buefy.toast.open({
+              this.$buefy.snackbar.open({
                 message: `Short URL is ${response.data.shortLink}`,
-                type: "is-success"
+                actionText: "Copy link",
+                type: "is-primary",
+                position: "is-top",
+                onAction: () => {
+                  this.$buefy.toast.open({
+                    message: "Link copied to clipboard!",
+                    queue: false
+                  });
+                }
               });
               resolve(response.data);
             },
