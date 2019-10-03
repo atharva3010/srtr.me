@@ -8,43 +8,54 @@
             src="../assets/undraw.png",
             width="400px",
             height="400px")
-          h1.is-size-2-mobile.is-size-2-tablet.is-size-3-mobile 
+          h1.is-size-1-desktop.is-size-2-tablet.is-size-3-mobile
             span.has-text-primary.has-text-weight-bold (shrivl) 
-            | your long url below!
+            | your long 
+            span.is-family-code.has-text-primary {URL}
           br
           p.has-text-grey.has-text-left
-            | Shrivl is a URL shortening service made as a minor project by Atharva Sharma and Nishank Gupta of CSE 3rd year Batch A, MITS Gwalior. It utilises the Firebase Dynamic Links api to shrink long URLs to short URLs, you can find the complete project source code
+            | Shrivl is a 
+            span.has-text-primary.has-text-weight-bold URL shortening service 
+            | made as a minor project by 
+            span.has-text-primary.has-text-weight-bold Atharva Sharma 
+            | and 
+            span.has-text-primary.has-text-weight-bold Nishank Gupta 
+            | of 
+            span.has-text-primary.has-text-weight-bold CSE 3rd year, Batch-A, MITS Gwalior. 
+            | It utilises the Firebase Dynamic Links api to shrink long URLs to short URLs, you can find the complete project source code
             a.has-text-primary.has-text-weight-bold(href="https://github.com/atharva3010/shrivl") 
               | here.
           br
           b-field(
             label="Long URL",
-            label-position="on-border")
-            b-input.is-large(
+            label-position="on-border",
+            custom-class="has-text-primary")
+            b-input(
               v-model="longURL"
               type="text",
               placeholder="Enter long URL here...",
               expanded,
-              size="is-large")
+              size="is-medium")
           b-field(
             label="Short URL",
             label-position="on-border",
+            custom-class="has-text-primary"
             v-if="shortURL")
-            b-input.is-large(
+            b-input(
               id="shortURL",
               v-model="shortURL"
               type="text",
               expanded,
-              size="is-large")
-            b-button.is-large.is-primary(
+              size="is-medium")
+            b-button.is-medium.is-primary(
               @click="copyLink()",
               oulined)
               | Copy link
-          button.button.is-primary.is-large.is-fullwidth(
+          button.button.is-primary.is-medium.is-fullwidth.is-size-5-mobile(
             @click="shrivlURL()"
           )
             span(v-if="!shortURL") Generate short URL!
-            span(v-if="shortURL") Generate another short URL!
+            span(v-if="shortURL") Shrivl another URL!
             b-icon(
               pack="fas",
               icon="arrow-right",
@@ -89,10 +100,6 @@ export default {
                 position: "is-top",
                 onAction: () => {
                   this.copyLink();
-                  this.$buefy.toast.open({
-                    message: "Link copied to clipboard!",
-                    queue: false
-                  });
                 }
               });
               resolve(response.data);
@@ -111,6 +118,10 @@ export default {
       var copyText = document.getElementById("shortURL");
       copyText.select();
       document.execCommand("copy");
+      this.$buefy.toast.open({
+        message: "Link copied to clipboard!",
+        queue: false
+      });
     }
   }
 };
