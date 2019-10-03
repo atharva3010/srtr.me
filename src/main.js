@@ -3,6 +3,12 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
+import Buefy from "buefy";
+import "buefy/dist/buefy.css";
+import axios from "axios";
+
+Vue.prototype.$http = axios;
+Vue.use(Buefy);
 
 Vue.config.productionTip = false;
 
