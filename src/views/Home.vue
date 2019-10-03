@@ -11,10 +11,11 @@
           h1.is-size-1-desktop.is-size-2-tablet.is-size-3-mobile
             span.has-text-primary.has-text-weight-bold (shrivl) 
             | your long 
-            span.is-family-code.has-text-primary {URL}
+            span.is-family-code.has-text-primary {URLs}
           br
           p.has-text-grey.has-text-left
-            | Shrivl is a 
+            span.has-text-primary.has-text-weight-bold Shrivl 
+            | is a 
             span.has-text-primary.has-text-weight-bold URL shortening service 
             | made as a minor project by 
             span.has-text-primary.has-text-weight-bold Atharva Sharma 
