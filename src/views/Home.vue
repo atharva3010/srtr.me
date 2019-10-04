@@ -9,9 +9,9 @@
             width="400px",
             height="400px")
           h1.is-size-1-desktop.is-size-2-tablet.is-size-3-mobile
-            span.has-text-primary.has-text-weight-bold (shrivl) 
+            span.is-family-code.has-text-primary.has-text-weight-bold {shrivl} 
             | your long 
-            span.is-family-code.has-text-primary {URLs}
+            span.has-text-weight-bold.has-text-primary URL(s)
           br
           p.has-text-grey.has-text-left
             span.has-text-primary.has-text-weight-bold Shrivl 
@@ -80,7 +80,7 @@ export default {
       return new Promise((resolve, reject) => {
         this.$http
           .post(
-            `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=AIzaSyD9_9Pqb8JRzeDDr79_Bk_4-utGgyaZUmU`,
+            `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${process.env.API_KEY}`,
             {
               dynamicLinkInfo: {
                 domainUriPrefix: "https://cse.page.link",
