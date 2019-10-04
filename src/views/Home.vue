@@ -80,7 +80,7 @@ export default {
       return new Promise((resolve, reject) => {
         this.$http
           .post(
-            `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${process.env.API_KEY}`,
+            `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${process.env.VUE_APP_API_KEY}`,
             {
               dynamicLinkInfo: {
                 domainUriPrefix: "https://cse.page.link",

@@ -6,10 +6,7 @@ import "./registerServiceWorker";
 import Buefy from "buefy";
 import "buefy/dist/buefy.css";
 import axios from "axios";
-import dotenv from "dotenv";
 
-Vue.use(dotenv);
-require("dotenv").config();
 Vue.prototype.$http = axios;
 Vue.use(Buefy);
 
