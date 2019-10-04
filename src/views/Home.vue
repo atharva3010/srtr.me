@@ -48,10 +48,17 @@
               type="text",
               expanded,
               size="is-medium")
-            b-button.is-medium.is-primary(
-              @click="copyLink()",
-              oulined)
-              | Copy link
+            b-tooltip(
+              position="is-top",
+              label="Copy link")
+              b-button.is-medium(
+                @click="copyLink()",
+                aria-label="Copy link",)
+                b-icon(
+                  pack="far",
+                  icon="copy",
+                  size="is-small")
+
           button.button.is-primary.is-medium.is-fullwidth.is-size-5-mobile(
             @click="shrivlURL()"
           )
