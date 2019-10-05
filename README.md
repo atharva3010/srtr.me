@@ -1,4 +1,4 @@
-# shrivl
+# srtr.me
 
 ## Project setup
 ```
