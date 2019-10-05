@@ -86,7 +86,7 @@
                   size="is-small")
             .column(v-if="shortURL")
               b-button.is-primary.is-medium.is-fullwidth.is-size-5-mobile(
-                @click="shrinkURL()",
+                @click="clearFields()",
                 outlined)
                 span Shrink another URL
                 b-icon(
