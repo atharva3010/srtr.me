@@ -115,7 +115,7 @@ export default {
             `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${process.env.VUE_APP_API_KEY}`,
             {
               dynamicLinkInfo: {
-                domainUriPrefix: "https://cse.page.link",
+                domainUriPrefix: "https://srtr.page.link",
                 link: this.longURL
               },
               suffix: {
