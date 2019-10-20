@@ -12,19 +12,7 @@
             span.is-family-code.has-text-primary.has-text-weight-bold {shrink} 
             span.has-text-grey-dark your long 
             span.has-text-weight-bold.has-text-primary URL(s)
-          p.has-text-grey-dark.has-text-left
-            span.has-text-weight-bold srtr.me 
-            | is a 
-            span.has-text-weight-bold URL shortening service 
-            | made as a minor project by 
-            span.has-text-weight-bold Atharva Sharma 
-            | and 
-            span.has-text-weight-bold Nishank Gupta 
-            | of 
-            span.has-text-weight-bold CSE 3rd year, Batch-A, MITS Gwalior. 
-            | It utilises the Firebase Dynamic Links api to shrink long URLs to short URLs and Vue.js on the client side, you can find the complete project source code 
-            a.has-text-weight-bold.has-text-primary(href="https://github.com/atharva3010/srtr.me") 
-              | here.
+
           div.fields
             b-field(
               label="Long URL",
@@ -71,7 +59,8 @@
           .columns.reverse-row-order 
             .column
               b-button.is-primary.is-medium.is-fullwidth.is-size-5-mobile(
-                @click="shortURL ? copyLink() : shrinkURL()")
+                @click="shortURL ? copyLink() : shrinkURL()",
+                :loading="isLoading")
                 span(v-if="!shortURL") Shrink URL!
                 span(v-if="shortURL") Copy Link!
                 b-icon(
@@ -93,6 +82,18 @@
                   pack="fas",
                   icon="arrow-right",
                   size="is-small")
+
+          p.has-text-grey-dark.has-text-left
+            span.has-text-weight-bold srtr.me 
+            | is a free and open source  
+            span.has-text-weight-bold URL shortening service 
+            | made by 
+            a.has-text-weight-bold.has-text-primary(href="https://github.com/atharva3010") Atharva Sharma. 
+            br
+            | You can find the complete project source code 
+            a.has-text-weight-bold.has-text-primary(href="https://github.com/atharva3010/srtr.me") here. 
+            br
+            | The existing URL shortening services run on a freemium model, are bloated and very slow. Thus, the idea of creating a completely free and easy to use URL shortening service was born.
           
 </template>
 
@@ -104,12 +105,14 @@ export default {
   data() {
     return {
       longURL: "",
-      shortURL: ""
+      shortURL: "",
+      isLoading: false
     };
   },
   methods: {
     shrinkURL() {
       return new Promise((resolve, reject) => {
+        this.isLoading = true;
         this.$http
           .post(
             `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${process.env.VUE_APP_API_KEY}`,
@@ -125,6 +128,7 @@ export default {
           )
           .then(
             response => {
+              this.isLoading = false;
               this.shortURL = response.data.shortLink;
               this.$buefy.snackbar.open({
                 message: `Short URL is ${response.data.shortLink}`,
@@ -138,6 +142,7 @@ export default {
               resolve(response.data);
             },
             error => {
+              this.isLoading = false;
               this.$buefy.snackbar.open({
                 message: error.message,
                 type: "is-danger",
