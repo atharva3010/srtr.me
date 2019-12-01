@@ -1,6 +1,6 @@
 # srtr.me
 
-### Server Setup
+# Server Setup
 
 ## Project setup
 ```
@@ -17,7 +17,7 @@ npm run dev
 npm run start
 ```
 
-### Client Setup
+# Client Setup
 
 ## Project setup
 ```
