@@ -14,7 +14,9 @@ router.post('/shorten', async (req, res) => {
 
   // Check base url
   if (!validUrl.isUri(process.env.DOMAIN)) {
-    return res.status(401).json('Invalid base url');
+    return res.status(401).json({
+      message: 'Invalid base url'
+    });
   }
 
   // Create url code
@@ -43,10 +45,14 @@ router.post('/shorten', async (req, res) => {
       }
     } catch (err) {
       console.error(err);
-      res.status(500).json('Server error');
+      res.status(500).json({
+        message: 'Server error'
+      });
     }
   } else {
-    res.status(401).json('Invalid long url');
+    res.status(401).json({
+      message: 'Invalid long url'
+    });
   }
 });
 
