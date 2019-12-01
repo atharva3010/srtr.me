@@ -1,5 +1,24 @@
 # srtr.me
 
+## Server Setup
+
+## Project setup
+```
+npm install
+```
+
+## Run dev server
+```
+npm run dev
+```
+
+## Run for production
+```
+npm run start
+```
+
+## Client Setup
+
 ## Project setup
 ```
 npm install
