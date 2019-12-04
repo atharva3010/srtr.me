@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
-var forceSsl = require('force-ssl-heroku');
+// var forceSsl = require('force-ssl-heroku');
 
 const app = express();
 
@@ -15,7 +15,7 @@ connectDB();
 // Middleware
 app.use(cors());
 app.use(express.json({extended: false}));
-app.use(forceSsl);
+// app.use(forceSsl);
 
 // Define Routes
 app.use('/', require('./routes/index'));
