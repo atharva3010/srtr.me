@@ -1,52 +1,32 @@
 {
-  "name": "shrivl",
-  "version": "0.1.0",
-  "private": true,
+  "name": "srtr.me",
+  "version": "1.0.0",
+  "description": "A URL shortening service",
+  "main": "index.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atharva3010/shrivl.git"
+  },
+  "author": "Atharva Sharma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atharva3010/shrivl/issues"
+  },
+  "homepage": "https://github.com/atharva3010/shrivl#readme",
   "dependencies": {
-    "axios": "^0.19.0",
-    "buefy": "^0.8.5",
-    "core-js": "^2.6.5",
-    "pug-plain-loader": "^1.0.0",
-    "register-service-worker": "^1.6.2",
-    "vue": "^2.6.10",
-    "vue-router": "^3.0.3",
-    "vuex": "^3.0.1"
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "force-ssl-heroku": "^1.0.2",
+    "mongoose": "^5.7.13",
+    "shortid": "^2.2.15",
+    "valid-url": "^1.0.9"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.11.0",
-    "@vue/cli-plugin-e2e-cypress": "^3.11.0",
-    "@vue/cli-plugin-eslint": "^3.11.0",
-    "@vue/cli-plugin-pwa": "^3.11.0",
-    "@vue/cli-plugin-unit-jest": "^3.11.0",
-    "@vue/cli-service": "^3.11.0",
-    "@vue/eslint-config-prettier": "^5.0.0",
-    "@vue/test-utils": "1.0.0-beta.29",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.6.0",
-    "eslint": "^5.16.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "lint-staged": "^8.1.5",
-    "prettier": "^1.18.2",
-    "pug": "^2.0.4",
-    "pug-loader": "^2.4.0",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "vue-cli-service lint",
-      "git add"
-    ]
+    "nodemon": "^2.0.1"
   }
 }

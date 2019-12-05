@@ -86,9 +86,9 @@
           p.has-text-grey-dark.has-text-left
             span.has-text-weight-bold srtr.me 
             | is a free and open source  
-            span.has-text-weight-bold URL shortening service 
-            | made by 
-            a.has-text-weight-bold.has-text-primary(href="https://github.com/atharva3010") Atharva Sharma. 
+            span.has-text-weight-bold URL shortening service. 
+            //- | made by 
+            //- a.has-text-weight-bold.has-text-primary(href="https://github.com/atharva3010") Atharva Sharma.
             br
             | You can find the complete project source code 
             a.has-text-weight-bold.has-text-primary(href="https://github.com/atharva3010/srtr.me") here. 
@@ -114,24 +114,15 @@ export default {
       return new Promise((resolve, reject) => {
         this.isLoading = true;
         this.$http
-          .post(
-            `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${process.env.VUE_APP_API_KEY}`,
-            {
-              dynamicLinkInfo: {
-                domainUriPrefix: "https://srtr.page.link",
-                link: this.longURL
-              },
-              suffix: {
-                option: "SHORT"
-              }
-            }
-          )
+          .post(`/api/url/shorten`, {
+            longUrl: this.longURL
+          })
           .then(
             response => {
               this.isLoading = false;
-              this.shortURL = response.data.shortLink;
+              this.shortURL = response.data.shortUrl;
               this.$buefy.snackbar.open({
-                message: `Short URL is ${response.data.shortLink}`,
+                message: `Short URL is ${response.data.shortUrl}`,
                 type: "is-primary",
                 position: "is-bottom",
                 actionText: "Copy link",
@@ -144,7 +135,7 @@ export default {
             error => {
               this.isLoading = false;
               this.$buefy.snackbar.open({
-                message: error.message,
+                message: error,
                 type: "is-danger",
                 position: "is-bottom",
                 actionText: "Retry",
