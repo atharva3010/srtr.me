@@ -26,6 +26,10 @@ if(process.env.NODE_ENV === 'production') {
   // Static folder
   app.use(express.static(__dirname + '/public'));
 
+  // Handle manifest.json & service-worker.js
+  app.get('/manifest.json', (req, res) => res.sendFile(__dirname + '/public/manifest.json'));
+  app.get('/service-worker.js', (req, res) => res.sendFile(__dirname + '/public/service-worker.js'));
+
   // Handle SPA
   app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
 }
