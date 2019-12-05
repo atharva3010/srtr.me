@@ -1,13 +1,5 @@
 self.__precacheManifest = [
   {
-    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
-    "url": "/robots.txt"
-  },
-  {
-    "revision": "3234e8992458873f7157d702f5a25a37",
-    "url": "/netlify.toml"
-  },
-  {
     "revision": "a57bbb23f65882986034",
     "url": "/js/chunk-vendors.16c44b5e.js"
   },

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.d7784f55249a2de30000255cc7a6fa13.js"
+  "/precache-manifest.98bb72c72f8aa766a7aee12623e0025f.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "shrivl"});
